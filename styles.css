@@ -70,12 +70,12 @@ h3 { font-size: 22px; }
 .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ── HERO ─────────────────────────────────────────── */
-.hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: stretch; justify-content: center; overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #061830 0%, #0a3d7a 60%, #0d5299 100%); }
 .hero-overlay { position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M0 0h40v40H0zm40 40h40v40H40z'/%3E%3C/g%3E%3C/svg%3E"); }
 .hero-particles { position: absolute; inset: 0; }
 .hero-particles canvas { width: 100%; height: 100%; }
-.hero-body { position: relative; z-index: 2; padding: 120px 0 100px; max-width: 760px; }
+.hero-body { position: relative; z-index: 2; padding: 100px 0 24px; max-width: 800px; }
 .hero-tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); background: rgba(245,197,24,0.12); border: 1px solid rgba(245,197,24,0.3); padding: 6px 16px; border-radius: 999px; margin-bottom: 28px; }
 .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(46px, 7vw, 88px); color: #fff; line-height: 1.05; margin-bottom: 22px; }
 .hero-title em { color: var(--accent); font-style: italic; }
@@ -271,4 +271,100 @@ h3 { font-size: 22px; }
   .hero-actions { flex-direction: column; }
   .cta-actions { flex-direction: column; width: 100%; }
   .cta-actions .btn { text-align: center; }
+}
+
+/* ── HERO EMAIL BAR ───────────────────────────────────── */
+.hero-email-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 12px 20px;
+  backdrop-filter: blur(6px);
+  width: fit-content;
+}
+.hero-email-label {
+  font-size: 13px;
+  color: #8ab8e8;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.hero-email-link {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--transition);
+}
+.hero-email-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.hero-email-sep {
+  color: rgba(255,255,255,0.3);
+  font-size: 16px;
+}
+
+/* ── HERO PRODUCT CARDS ───────────────────────────────────── */
+.hero-cards-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  position: relative;
+  z-index: 3;
+  padding-bottom: 60px;
+  margin-top: -20px;
+}
+.hero-pcard {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-decoration: none;
+  color: #fff;
+  backdrop-filter: blur(10px);
+  transition: background var(--transition), transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.hero-pcard:hover {
+  background: rgba(255,255,255,0.16);
+  border-color: rgba(245,197,24,0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.25);
+}
+.hpc-icon {
+  font-size: 32px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-pcard h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+}
+.hero-pcard p {
+  font-size: 13px;
+  color: #b8d4ff;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .hero-cards-row { grid-template-columns: repeat(2, 1fr); }
+  .hero-email-bar { width: 100%; }
+}
+@media (max-width: 480px) {
+  .hero-cards-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hero-email-bar { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .hero-email-sep { display: none; }
 }
